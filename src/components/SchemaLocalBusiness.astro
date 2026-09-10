@@ -1,0 +1,105 @@
+---
+/**
+ * Schema.org - LocalBusiness
+ * מאפשר לגוגל להציג כתובת, שעות פעילות ודירוג בתוצאות החיפוש
+ */
+import { site } from "../data/site";
+
+const siteUrl = "https://www.zulatech.co.il";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": `${siteUrl}/#business`,
+  name: site.name,
+  description:
+    "מעבדת מחשבים, תקשורת ורשתות, חשמל ומצלמות אבטחה. בעל מקצוע אחד לכל התחומים - חדרה, השרון וחיפה.",
+  url: siteUrl,
+  telephone: "+972544202284",
+  image: `${siteUrl}/images/netanel-at-work.webp`,
+  logo: `${siteUrl}/images/logo-zulatech.png`,
+  priceRange: "₪₪",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "השושנים 6",
+    addressLocality: "חדרה",
+    addressCountry: "IL",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 32.4340,
+    longitude: 34.9196,
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+      opens: "09:00",
+      closes: "17:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Friday",
+      opens: "09:00",
+      closes: "14:00",
+    },
+  ],
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: site.rating,
+    reviewCount: site.reviewCount,
+    bestRating: "5",
+  },
+  areaServed: [
+    { "@type": "City", name: "חדרה" },
+    { "@type": "City", name: "זכרון יעקב" },
+    { "@type": "City", name: "פרדס חנה" },
+    { "@type": "City", name: "גבעת עדה" },
+    { "@type": "City", name: "חיפה" },
+    { "@type": "City", name: "נתניה" },
+    { "@type": "City", name: "כפר סבא" },
+    { "@type": "City", name: "הרצליה" },
+  ],
+  sameAs: [site.social.facebook, site.social.instagram, site.googleProfile],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "שירותי Zulatech",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "מעבדת מחשבים",
+          description: "תיקון ושדרוג מחשבים ניידים ונייחים, הרכבת מחשבי גיימינג ומכירת ציוד קצה.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "תקשורת ורשתות",
+          description: "ארונות תקשורת, שקעי רשת, כבילת CAT6 ואיתור תקלות רשת.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "חשמל",
+          description: "עבודות חשמל על ידי חשמלאי בעל רישיון רשמי - לוחות, שקעים ואיתור תקלות.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "מצלמות אבטחה",
+          description: "מצלמות אבטחה, אינטרקום, בקרת כניסה ומערכות אזעקה.",
+        },
+      },
+    ],
+  },
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />

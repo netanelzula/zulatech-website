@@ -274,8 +274,8 @@
 .proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 @media(max-width:900px){.proj-grid{grid-template-columns:1fr}}
 .proj-card{overflow:hidden}
-.proj-card[data-goto]{transition:transform .25s ease,box-shadow .25s ease}
-.proj-card[data-goto]:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(43,63,86,.14)}
+a.proj-card{transition:transform .25s ease,box-shadow .25s ease}
+a.proj-card:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(43,63,86,.14)}
 
 /* ---------- ABOUT PHOTOS (side by side desktop, stacked mobile) ---------- */
 .about-photos{display:flex;gap:22px;justify-content:center;align-items:center;margin:0 auto 34px;flex-wrap:wrap}
@@ -381,29 +381,8 @@
 footer{padding:60px 0 26px;color:var(--color-ink-dim);font-size:13.8px}
 @media(max-width:760px){.footer-grid{grid-template-columns:1fr 1fr}}
 
-/* ---------- FLOATING (bottom corners) ---------- */
-.fab-corner{
-  position:fixed;bottom:20px;z-index:320;width:50px;height:50px;border-radius:50%;
-  display:grid;place-items:center;cursor:pointer;box-shadow:var(--shadow-card);border:1px solid var(--hair);
-  background:rgba(255,255,255,.9);backdrop-filter:blur(12px);color:var(--color-brand-blue);
-  transition:bottom .3s ease,opacity .3s ease,transform .3s ease;
-}
 
-/* ---------- FLOATING (sticky CTA row, exact mirror of hero buttons) ---------- */
-.sticky-cta{
-  position:fixed;bottom:20px;left:50%;
-  transform:translateX(-50%) translateY(160px);
-  opacity:0;pointer-events:none;
-  z-index:315;display:flex;gap:12px;
-  transition:transform .35s ease,opacity .3s ease,bottom .3s ease;
-}
-@media(max-width:640px){
-  .sticky-cta{transform:translateX(-50%) translateY(160px);gap:8px;max-width:calc(100vw - 24px)}
-  .sticky-cta.show{transform:translateX(-50%) translateY(0)}
-  .sticky-cta .btn{min-height:42px;padding:0 14px;font-size:13px;gap:6px;border-radius:12px}
-  .sticky-cta .btn svg{width:16px;height:16px}
-  .sticky-cta .cta-label{display:none}
-}
+
 .close-x{margin-top:6px;width:100%;padding:13px;border-radius:12px;border:0;background:var(--color-brand-blue);color:#fff;font:inherit;font-weight:700;cursor:pointer}
 /* ---------- PROCESS STEPS ---------- */
 .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
@@ -468,15 +447,7 @@ footer{padding:60px 0 26px;color:var(--color-ink-dim);font-size:13.8px}
 .author-box .a-role{font-size:13px;color:var(--color-ink-dim)}
 
 
-/* ---------- NAVLINK (no-href click targets, avoids sandbox link interception) ---------- */
-[data-goto]{cursor:pointer}
 
-/* ---------- HIDE FLOATING BUTTONS WHEN A MENU IS OPEN ---------- */
-body.menu-open .sticky-cta,
-body.menu-open .fab-corner,
-body.menu-open .cookie-banner{opacity:0 !important;pointer-events:none !important;visibility:hidden !important}
 
-/* ---------- MOBILE MENU DRAWER ---------- */
-.mobile-drawer{display:none;position:fixed;top:0;right:0;bottom:0;width:min(320px,86vw);background:#fff;z-index:200;box-shadow:-10px 0 40px rgba(0,0,0,.18);padding:24px 22px;overflow-y:auto;transform:translateX(105%);transition:transform .3s ease}
-@media(min-width:981px){.mobile-drawer,.mobile-scrim{display:none !important}}
+
 }
