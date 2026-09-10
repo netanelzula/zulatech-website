@@ -1,63 +1,296 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Faq from "../components/Faq.astro";
-import { site } from "../data/site";
-
-const demoFaq = [
-  { q: "כמה עולה תיקון מחשב?", a: "אין מחיר אחיד, כי הכל תלוי בסוג התקלה ובחלקים שצריך להחליף. מה שכן קבוע: אני בודק, מסביר בדיוק מה מצאתי ומה צריך ונותן מחיר סופי עוד לפני שאני מתחיל." },
-  { q: "כמה זמן לוקח תיקון?", a: "תלוי בתקלה ובזמינות החלקים. תקלות פשוטות נסגרות מהר והרכבת מחשב חדש מוכנה בדרך כלל עד 3 ימי עסקים." },
-  { q: "חובה שחשמלאי יהיה בעל רישיון?", a: "כן. עבודות חשמל מחייבות רישיון לפי חוק וזה לא עניין פורמלי אלא בטיחות. אני חשמלאי בעל רישיון רשמי." },
-];
 ---
 
 <BaseLayout
-  title="Zulatech - חדרה, השרון וחיפה | מחשבים, תקשורת, חשמל ומצלמות"
-  description="Zulatech - מעבדת מחשבים, תקשורת ורשתות, חשמל ומצלמות אבטחה. חדרה, השרון וחיפה."
+  title="Zulatech - חדרה, השרון וחיפה | מחשבים, תקשורת, חשמל ומצלמות אבטחה"
+  description="Zulatech - מעבדת מחשבים, תקשורת ורשתות, חשמל ומצלמות אבטחה. בעל מקצוע אחד לכל התחומים, בחדרה, השרון וחיפה."
 >
-  <section class="px-4 py-10">
-    <div class="mx-auto max-w-[1140px]">
-      <div class="glass reveal px-8 py-14 text-center">
-        <span class="mb-5 inline-block rounded-full border border-[rgba(47,128,245,.3)] bg-[rgba(47,128,245,.08)] px-4 py-1.5 text-[13px] font-bold text-[var(--color-brand-blue)]">
-          תשתית 3א + 3ב
-        </span>
-        <h1 class="mb-2 text-[clamp(30px,4.4vw,46px)] text-[var(--color-brand-blue)]">
-          העסק והבית שלך<br /><span class="text-[var(--color-brand-sky)]">בידיים טובות</span>
-        </h1>
-        <p class="mx-auto mb-6 max-w-xl text-[var(--color-ink-dim)]">
-          עמוד בדיקה זמני. משמש לאימות שהתשתית והרכיבים המשותפים עובדים.
-        </p>
-        <div class="flex flex-wrap justify-center gap-3">
-          <a href={site.phoneHref} class="btn btn-primary">חייגו: {site.phone}</a>
-          <a href={site.whatsapp} target="_blank" rel="noopener" class="btn">וואטסאפ</a>
+<section id="hero" class="hero">
+  <div class="wrap">
+    <div class="hero-card glass reveal">
+      <div class="seal"><b>20</b><span>שנות ניסיון</span></div>
+      <img class="portrait-float" src="/images/netanel-portrait.webp" alt="נתנאל, בעל Zulatech">
+      <h1>העסק והבית שלך<br><span>בידיים טובות</span></h1>
+      <div class="hero-lines">
+        <p>אני נתנאל, הבעלים של Zulatech - מעבדת מחשבים, תקשורת, חשמל ומצלמות אבטחה.</p>
+        <p>עסקים, חברות ולקוחות פרטיים בוחרים בי כי הם יודעים שמהרגע שפונים אליי, הכל בידיים טובות.</p>
+        <p>שקיפות מלאה, מחיר שנאמר מראש ותוצאה שאפשר לסמוך עליה.</p>
+      </div>
+      <p class="audience-line"><b>לבית</b> · <b>לעסק</b> · <b>לאדריכלים</b> · <b>למעצבי פנים</b> · <b>לקבלנים</b></p>
+      <div class="hero-ctas">
+        <a href="tel:+972544202284" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" stroke="#fff" fill="none" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+          חייגו: 054-420-2284
+        </a>
+        <a href="https://wa.me/972544202284" target="_blank" rel="noopener" class="btn">
+          <svg viewBox="0 0 24 24" fill="var(--wa)"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.87 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.7.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.17-1.42-.07-.12-.27-.2-.57-.35M12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88M20.46 3.48A11.82 11.82 0 0 0 12.05 0C5.49 0 .16 5.34.15 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.48-8.4"/></svg>
+          וואטסאפ
+        </a>
+      </div>
+      <div class="badges">
+        <span class="badge">טכנאי מחשבים</span>
+        <span class="badge">CCNA</span>
+        <span class="badge">חשמלאי בעל רישיון</span>
+      </div>
+      <div class="stat-row">
+        <div class="stat"><div class="num">20+</div><div class="lbl">שנות ניסיון</div></div>
+        <div class="stat"><div class="num">5.0★</div><div class="lbl">דירוג בגוגל</div></div>
+        <div class="stat"><div class="num">63</div><div class="lbl">ביקורות</div></div>
+        <div class="stat"><div class="num">4</div><div class="lbl">תחומי שירות</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="audience">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">מי אתם</div>
+      <h2 id="audienceHeadline">איך אני יכול לעזור?</h2>
+      <p>בחרו את המסלול שמתאים לכם ותקבלו בדיוק את המידע הרלוונטי.</p>
+    </div>
+    <div class="aud-grid">
+      <a href="/labayit" class="aud-card glass glass-sm reveal is-clickable" style="text-decoration:none;color:inherit;display:block">
+        <div class="aud-ic"><svg viewBox="0 0 24 24"><path d="M3 12l9-9 9 9"/><path d="M5 10v10h14V10"/></svg></div>
+        <h3>לבית</h3>
+        <p>פתרונות טכנולוגיים לבית חדש או קיים - מחשבים, רשת, מצלמות וחשמל.</p>
+        <a href="/labayit" class="go">אני לקוח פרטי ←</a>
+      </a>
+      <a href="/lesek" class="aud-card glass glass-sm reveal is-clickable" style="text-decoration:none;color:inherit;display:block">
+        <div class="aud-ic"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="14" rx="1"/><path d="M8 7V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v3"/></svg></div>
+        <h3>לעסק</h3>
+        <p>תשתיות, אבטחה, תקשורת ו-IT לעסקים - פחות ספקים, יותר שליטה.</p>
+        <a href="/lesek" class="go">אני עסק ←</a>
+      </a>
+      <a href="/adrichalim" class="aud-card glass glass-sm reveal is-clickable" style="text-decoration:none;color:inherit;display:block">
+        <div class="aud-ic"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"/></svg></div>
+        <h3>לאדריכלים ומעצבי פנים</h3>
+        <p>תכנון טכנולוגי שמשתלב בפרויקט בלי לפגוע בעיצוב.</p>
+        <a href="/adrichalim" class="go">אני מתכנן/ת ←</a>
+      </a>
+      <a href="/kablanim" class="aud-card glass glass-sm reveal is-clickable" style="text-decoration:none;color:inherit;display:block">
+        <div class="aud-ic"><svg viewBox="0 0 24 24"><path d="M2 20h20M4 20V10l4-2 4 2 4-2 4 2v10"/></svg></div>
+        <h3>לקבלנים</h3>
+        <p>תשתיות, תיאום וביצוע מדויק מול לוחות הזמנים של הפרויקט.</p>
+        <a href="/kablanim" class="go">אני קבלן ←</a>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">שירותים</div>
+      <h2>ארבעה תחומים. כתובת אחת.</h2>
+      <p>לא עוד תיאום בין כמה ספקים. תשלום אחד, אחריות אחת, בעל מקצוע אחד שאתה סומך עליו.</p>
+    </div>
+    <div class="svc-grid">
+      <a href="/machshevim" class="svc-card glass glass-sm reveal is-clickable" style="text-decoration:none;color:inherit;display:block">
+        <svg class="svc-mark" viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="12" rx="1.6"/><path d="M8 20h8M12 16v4"/></svg>
+        <h3>מעבדת מחשבים</h3>
+        <p>תיקון ושדרוג מחשבים ניידים ונייחים, הרכבת מחשבי גיימינג, מכירת ציוד קצה ואביזרים.</p>
+        <div class="svc-sub"><span>עסקי</span><span>פרטי</span></div>
+      </a>
+      <a href="/tikshoret" class="svc-card glass glass-sm reveal is-clickable" style="text-decoration:none;color:inherit;display:block">
+        <svg class="svc-mark" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="1.6"/><path d="M7.5 7h9M7.5 11h9M7.5 15h5"/></svg>
+        <h3>תקשורת ורשתות</h3>
+        <p>ארונות תקשורת, התקנת שקעי רשת ותיוג מקצועי, פריסת כבלים ואיתור תקלות רשת.</p>
+        <div class="svc-sub"><span>ארון תקשורת</span><span>כבילת CAT6</span></div>
+      </a>
+      <a href="/chashmal" class="svc-card glass glass-sm reveal is-clickable" style="text-decoration:none;color:inherit;display:block">
+        <svg class="svc-mark" viewBox="0 0 24 24"><path d="M13 2 4.5 13.5H11L10 22l8.5-11.5H12z"/></svg>
+        <h3>חשמל</h3>
+        <p>כל עבודות החשמל, על ידי חשמלאי בעל רישיון רשמי - בלי לתאם עם בעל מקצוע נוסף.</p>
+        <div class="svc-sub"><span>רישיון רשמי</span><span>עסקי</span><span>פרטי</span></div>
+      </a>
+      <a href="/matzlamot" class="svc-card glass glass-sm reveal is-clickable" style="text-decoration:none;color:inherit;display:block">
+        <svg class="svc-mark" viewBox="0 0 24 24"><path d="M3 8.5 15.5 4l1.6 4.3L4.6 12.8z"/><path d="M6 12v7h12v-6"/><circle cx="17.5" cy="16" r="2.2"/></svg>
+        <h3>מצלמות אבטחה</h3>
+        <p class="note">(מתח נמוך מאוד)</p>
+        <p>התקנת מצלמות אבטחה, אינטרקום, בקרת כניסה ומערכות אזעקה - עם ציוד מוביל כדוגמת HIKVISION.</p>
+        <div class="svc-sub"><span>מצלמות אבטחה</span><span>אינטרקום ובקרת כניסה</span><span>אזעקות</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-photo reveal"><img src="/images/netanel-at-work.webp" alt="נתנאל, בעל Zulatech"></div>
+      <div class="about-card glass glass-sm reveal">
+        <div class="eyebrow">מי מאחורי Zulatech</div>
+        <h2 style="font-size:26px;">מנתנאל מחשבים ל-Zulatech</h2>
+        <p>התחלתי עם מעבדת מחשבים תחת השם "נתנאל מחשבים", עם ערך אחד מרכזי: הלקוח חייב לדעת בדיוק מה הוא מקבל, כמה הוא משלם ולמה הוא יכול לצפות עוד לפני שמתחילים.</p>
+        <p>עם הזמן רכשתי ידע בתקשורת קווית וב-Wi-Fi ובמערכות מתח נמוך והוצאתי גם רישיון חשמלאי. לא כדי להיות גדול יותר, אלא כדי לתת פתרון שלם תחת קורת גג אחת.</p>
+        <p class="slogan-line">העסק והבית שלך בידיים טובות.</p>
+        <a href="/alenu" class="btn btn-primary">הסיפור המלא ←</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="why">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">למה Zulatech</div>
+      <h2>מה שמייחד אותנו</h2>
+    </div>
+    <div class="diff-grid">
+      <div class="diff-card glass glass-sm reveal"><h3>זמינות מיידית</h3><p>מענה לרוב באותו רגע שמתקשרים - חיבור מרחוק, הגעה לבית או לעסק כדי לפתור תקלה ואפילו להנחות בעל מקצוע נוסף באמצע פרויקט כדי שהכל ירוץ והלו"ז לא יתעכב.</p></div>
+      <div class="diff-card glass glass-sm reveal"><h3>רישיונות מוכחים</h3><p>חשמלאי בעל רישיון רשמי, הסמכת CCNA וטכנאי מחשבים, לא רק ניסיון, גם הסמכות.</p></div>
+      <div class="diff-card glass glass-sm reveal"><h3>ארבעה תחומים, כתובת אחת</h3><p>תשלום אחד, אחריות אחת, בלי "זה לא באחריות שלי".</p></div>
+      <div class="diff-card glass glass-sm reveal"><h3>מגיע בזמן, מסיים בזמן</h3><p>קובעים שעה ומגיעים בה. בלי דחיות ובלי תירוצים.</p></div>
+      <div class="diff-card glass glass-sm reveal"><h3>שקיפות מלאה</h3><p>מסביר מה, כמה ולמה לפני שמתחיל, בלי הפתעות.</p></div>
+      <div class="diff-card glass glass-sm reveal"><h3>20 שנה - ועדיין אישי</h3><p>הניסיון של חברה גדולה, עם היחס שמקבלים רק מבעל מקצוע שאכפת לו.</p></div>
+    </div>
+    <div class="diff-banner glass reveal">
+      <p>מרגע שיחת הטלפון הראשונה, דרך אבחון מקצועי בשטח ומחיר שקוף מראש ועד שהעבודה נגמרת, אתה לא לבד.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="projects">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">פרויקטים</div>
+      <h2>לא רק גלריה, אלא ביצוע רעיון</h2>
+      <p>כל פרויקט - האתגר, הפתרון והתוצאה.</p>
+    </div>
+    <div class="proj-grid">
+      <a href="/proyektim" class="proj-card glass glass-sm reveal" style="text-decoration:none;color:inherit;display:block">
+        <div class="proj-img"><img src="/images/gaming-pc-build-hadera.webp" alt="הרכבת מחשב גיימינג בחדרה"></div>
+        <div class="proj-body">
+          <h3>הרכבת מחשב גיימינג - חדרה</h3>
+          <div class="proj-row"><b>האתגר:</b> מחשב מותאם אישית, בתקציב ובזמן קצר</div>
+          <div class="proj-row"><b>הפתרון:</b> בחירת רכיבים איכותיים והרכבה מדויקת במעבדה</div>
+          <div class="proj-row"><b>התוצאה:</b> מחשב גיימינג חזק, מוכן תוך יום</div>
         </div>
-        <div class="mt-7 flex flex-wrap justify-center gap-2">
-          {site.badges.map((b) => (
-            <span class="rounded-full border border-[var(--hair)] bg-white/60 px-4 py-1.5 text-[13px] text-[var(--color-navy)]">{b}</span>
-          ))}
+      </a>
+      <a href="/proyektim" class="proj-card glass glass-sm reveal" style="text-decoration:none;color:inherit;display:block">
+        <div class="proj-img"><img src="/images/network-cabinet-givat-ada.webp" alt="ארון תקשורת בגבעת עדה"></div>
+        <div class="proj-body">
+          <h3>ארון תקשורת - גבעת עדה</h3>
+          <div class="proj-row"><b>האתגר:</b> תשתית רשת מבולגנת שלא עומדת בעומס</div>
+          <div class="proj-row"><b>הפתרון:</b> ארון תקשורת מסודר + תיוג מקצועי לכל יציאה</div>
+          <div class="proj-row"><b>התוצאה:</b> רשת יציבה, קל לתחזק ולאתר תקלות</div>
+        </div>
+      </a>
+      <a href="/proyektim" class="proj-card glass glass-sm reveal" style="text-decoration:none;color:inherit;display:block">
+        <div class="proj-img"><img src="/images/security-camera-office-hadera.webp" alt="מצלמות אבטחה במשרדים בחדרה"></div>
+        <div class="proj-body">
+          <h3>מצלמות אבטחה - משרדים בחדרה</h3>
+          <div class="proj-row"><b>האתגר:</b> כיסוי מלא בלי כבלים גלויים</div>
+          <div class="proj-row"><b>הפתרון:</b> תכנון מיקומים מדויק והתקנה נקייה</div>
+          <div class="proj-row"><b>התוצאה:</b> כיסוי מלא, מראה מקצועי</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="reviews">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">המלצות מגוגל</div>
+      <h2>מה הלקוחות אומרים</h2>
+    </div>
+    <div class="rating-block reveal">
+      <div class="rating-num">5.0</div>
+      <div><div class="stars">★★★★★</div><div class="rating-sub">מתוך 63 ביקורות ב-<a href="https://maps.app.goo.gl/tvhLiUNe1o8iRGFZ8" target="_blank" rel="noopener" class="gmb-link">Google Business Profile</a></div></div>
+    </div>
+    <div class="rev-grid">
+      <div class="rev-card glass glass-sm reveal">
+        <div class="rev-cat">מעבדת מחשבים</div>
+        <div class="rev-top"><div class="rev-name">mira gilboa</div><div class="rev-stars">★★★★★</div></div>
+        <p class="rev-quote">הגעתי עם מחשב נייד שכבר היה במעבדה אחרת שאמרה שלא ניתן לתקן אותו. נתנאל תיקן אותו בעלות סמלית. מומלץ בחום!</p>
+      </div>
+      <div class="rev-card glass glass-sm reveal">
+        <div class="rev-cat">מעבדת מחשבים</div>
+        <div class="rev-top"><div class="rev-name">guy Gerafi</div><div class="rev-stars">★★★★★</div></div>
+        <p class="rev-quote">שירות יוצא מן הכלל! נתי החליף לי סוללה ללפטופ עם שירות VIP ועל הדרך גם עשה ניקוי מאוורר, אלוף!</p>
+      </div>
+      <div class="rev-card glass glass-sm reveal">
+        <div class="rev-cat">הרכבת מחשב גיימינג</div>
+        <div class="rev-top"><div class="rev-name">moti hadad</div><div class="rev-stars">★★★★★</div></div>
+        <p class="rev-quote">מקצוען אמיתי. הזמנתי מחשב לגיימרים, קיבלתי מחיר מעולה והמחשב היה מוכן תוך יום!</p>
+      </div>
+      <div class="rev-card glass glass-sm reveal">
+        <div class="rev-cat">תקשורת ורשתות</div>
+        <div class="rev-top"><div class="rev-name">Paul Diamant</div><div class="rev-stars">★★★★★</div></div>
+        <p class="rev-quote">פניתי להתקנת שקעי רשת בשתי חדרים. הגיע במהירות, עבודה מקצועית ונקייה. ממליץ.</p>
+      </div>
+      <div class="rev-card glass glass-sm reveal">
+        <div class="rev-cat">מצלמות אבטחה</div>
+        <div class="rev-top"><div class="rev-name">Yigal Fisher</div><div class="rev-stars">★★★★★</div></div>
+        <p class="rev-quote">מקצועי, אמין ומחירים טובים. עשה אצלי 6 מצלמות אבטחה בבית ודאג שהכול יעבוד.</p>
+      </div>
+      <div class="rev-card glass glass-sm reveal">
+        <div class="rev-cat">תקשורת וחשמל · חדרה</div>
+        <div class="rev-top"><div class="rev-name">Bina Zilberman Peled</div><div class="rev-stars">★★★★★</div></div>
+        <p class="rev-quote">נתנאל עשה אצלי כמה עבודות תקשורת וחשמל. מקצועי, אמין, סבלני ונעים הליכות. מסביר הכל.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="areas">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">אזורי שירות</div>
+      <h2>איפה אני עובד</h2>
+    </div>
+    <div class="areas-row reveal">
+      <a href="/ezorei-sherut#hadera" class="area-chip glass glass-sm" style="text-decoration:none;color:inherit;display:block"><b>חדרה והסביבה</b><span>זכרון יעקב · גבעת עדה · פרדס חנה</span></a>
+      <a href="/ezorei-sherut#sharon" class="area-chip glass glass-sm" style="text-decoration:none;color:inherit;display:block"><b>השרון</b><span>נתניה · כפר סבא · הרצליה</span></a>
+      <a href="/ezorei-sherut#merkaz" class="area-chip glass glass-sm" style="text-decoration:none;color:inherit;display:block"><b>מרכז</b><span>תל אביב · רמת גן · ראשון לציון · פתח תקווה</span></a>
+      <a href="/ezorei-sherut#haifa" class="area-chip glass glass-sm" style="text-decoration:none;color:inherit;display:block"><b>חיפה והסביבה</b><span>חיפה וישובי הסביבה</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">יצירת קשר</div>
+      <h2>מוכנים להתחיל?</h2>
+      <p>טלפון או וואטסאפ - בלי טפסים, בלי המתנה.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="wa-panel glass reveal">
+        <svg class="big" viewBox="0 0 24 24" stroke="var(--blue)" fill="none" stroke-width="1.6"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+        <h3>הכי מהיר - טלפון</h3>
+        <p>חיוג ישיר, מענה מיידי בשעות הפעילות</p>
+        <a href="tel:+972544202284" class="btn btn-primary" style="width:100%">חייגו: 054-420-2284</a>
+        <div class="wa-row">
+          <div class="wa-ic"><svg viewBox="0 0 24 24"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.87 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.7.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.17-1.42-.07-.12-.27-.2-.57-.35M12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88M20.46 3.48A11.82 11.82 0 0 0 12.05 0C5.49 0 .16 5.34.15 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.48-8.4"/></svg></div>
+          <div class="wa-txt"><div class="val">וואטסאפ</div><div class="lbl">מענה אישי, בדרך כלל תוך דקות</div></div>
+          <a href="https://wa.me/972544202284" target="_blank" rel="noopener" class="wa-btn-sm">שליחה</a>
+        </div>
+      </div>
+      <div class="info-panel glass glass-sm reveal">
+        <div class="info-row">
+          <div class="info-ic"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><div class="lbl">כתובת</div><div class="val">השושנים 6, חדרה</div></div>
+        </div>
+        <div class="info-row">
+          <div class="info-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.2 2"/></svg></div>
+          <div><div class="lbl">שעות פעילות</div><div class="val">א'-ה' 09:00–17:00 · ו' וערבי חג 09:00–14:00</div></div>
+        </div>
+        <div class="social-row">
+          <span class="social-label">מצאו אותנו גם ב</span>
+          <a href="https://www.facebook.com/zulatech9/" target="_blank" rel="noopener" class="soc-btn" style="background:#0866FF" aria-label="פייסבוק"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.56 9.87v-6.98H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.98A10 10 0 0 0 22 12z"/></svg></a>
+          <a href="https://www.instagram.com/zulatech_/" target="_blank" rel="noopener" class="soc-btn" style="background:linear-gradient(45deg,#F9CE34,#EE2A7B 52%,#6228D7)" aria-label="אינסטגרם"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.72 3.72 0 0 1-1.38-.9 3.72 3.72 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07c-1.28.06-2.15.26-2.91.56a5.87 5.87 0 0 0-2.13 1.39A5.87 5.87 0 0 0 .62 4.14C.32 4.9.12 5.77.06 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.28.26 2.15.56 2.91.31.79.72 1.46 1.39 2.13.67.67 1.34 1.08 2.13 1.39.76.3 1.63.5 2.91.56C8.33 24 8.74 24 12 24s3.67-.01 4.95-.07c1.28-.06 2.15-.26 2.91-.56a5.87 5.87 0 0 0 2.13-1.39 5.87 5.87 0 0 0 1.39-2.13c.3-.76.5-1.63.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.28-.26-2.15-.56-2.91a5.87 5.87 0 0 0-1.39-2.13A5.87 5.87 0 0 0 19.86.63c-.76-.3-1.63-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zm0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.41-10.4a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg></a>
+        </div>
+        <div class="nav-row">
+          <span class="social-label">רוצים להגיע אליי?</span>
+          <a href="https://waze.com/ul?q=%D7%94%D7%A9%D7%95%D7%A9%D7%A0%D7%99%D7%9D%206%2C%20%D7%97%D7%93%D7%A8%D7%94&navigate=yes" target="_blank" rel="noopener" class="soc-btn" style="background:#33CCFF" aria-label="ניווט בוייז"><svg viewBox="0 0 24 24" fill="#fff"><path d="M13.218 0C9.915 0 6.835 1.49 4.723 4.148c-1.515 1.913-2.31 4.272-2.31 6.706v1.739c0 .894-.62 1.738-1.862 1.813-.298.025-.547.224-.547.522-.05.82.82 2.31 2.012 3.502.82.844 1.788 1.515 2.832 2.036a3 3 0 0 0 2.955 3.528 2.966 2.966 0 0 0 2.931-2.385h2.509c.323 1.689 2.086 2.856 3.974 2.21 1.64-.546 2.36-2.409 1.763-3.924a12.84 12.84 0 0 0 1.838-1.465 10.73 10.73 0 0 0 3.18-7.65c0-2.882-1.118-5.589-3.155-7.625A10.899 10.899 0 0 0 13.218 0zm0 1.217c2.558 0 4.967.994 6.78 2.807a9.525 9.525 0 0 1 2.807 6.78A9.526 9.526 0 0 1 20 17.585a9.647 9.647 0 0 1-6.78 2.807h-2.46a3.008 3.008 0 0 0-2.93-2.41 3.03 3.03 0 0 0-2.534 1.367v.024a8.945 8.945 0 0 1-2.41-1.788c-.844-.844-1.316-1.614-1.515-2.11a2.858 2.858 0 0 0 1.441-.846 2.959 2.959 0 0 0 .795-2.036v-1.789c0-2.11.696-4.197 2.012-5.861 1.863-2.385 4.62-3.726 7.6-3.726zm-2.41 5.986a1.192 1.192 0 0 0-1.191 1.192 1.192 1.192 0 0 0 1.192 1.193A1.192 1.192 0 0 0 12 8.395a1.192 1.192 0 0 0-1.192-1.192zm7.204 0a1.192 1.192 0 0 0-1.192 1.192 1.192 1.192 0 0 0 1.192 1.193 1.192 1.192 0 0 0 1.192-1.193 1.192 1.192 0 0 0-1.192-1.192zm-7.377 4.769a.596.596 0 0 0-.546.845 4.813 4.813 0 0 0 4.346 2.757 4.77 4.77 0 0 0 4.347-2.757.596.596 0 0 0-.547-.845h-.025a.561.561 0 0 0-.521.348 3.59 3.59 0 0 1-3.254 2.061 3.591 3.591 0 0 1-3.254-2.061.64.64 0 0 0-.546-.348z"/></svg></a>
+          <a href="https://www.google.com/maps/search/?api=1&query=%D7%94%D7%A9%D7%95%D7%A9%D7%A0%D7%99%D7%9D%206%2C%20%D7%97%D7%93%D7%A8%D7%94" target="_blank" rel="noopener" class="soc-btn maps-tile" style="background:#fff;border:1px solid var(--hair)" aria-label="פתיחה בגוגל מפות"><svg viewBox="0 0 24 24" class="maps-svg"><path d="M19.527 4.799c1.212 2.608.937 5.678-.405 8.173-1.101 2.047-2.744 3.74-4.098 5.614-.619.858-1.244 1.75-1.669 2.727-.141.325-.263.658-.383.992-.121.333-.224.673-.34 1.008-.109.314-.236.684-.627.687h-.007c-.466-.001-.579-.53-.695-.887-.284-.874-.581-1.713-1.019-2.525-.51-.944-1.145-1.817-1.79-2.671L19.527 4.799zM8.545 7.705l-3.959 4.707c.724 1.54 1.821 2.863 2.871 4.18.247.31.494.622.737.936l4.984-5.925-.029.01c-1.741.601-3.691-.291-4.392-1.987a3.377 3.377 0 0 1-.209-.716c-.063-.437-.077-.761-.004-1.198l.001-.007zM5.492 3.149l-.003.004c-1.947 2.466-2.281 5.88-1.117 8.77l4.785-5.689-.058-.05-3.607-3.035zM14.661.436l-3.838 4.563a.295.295 0 0 1 .027-.01c1.6-.551 3.403.15 4.22 1.626.176.319.323.683.377 1.045.068.446.085.773.012 1.22l-.003.016 3.836-4.561A8.382 8.382 0 0 0 14.67.439l-.009-.003zM9.466 5.868L14.162.285l-.047-.012A8.31 8.31 0 0 0 11.986 0a8.439 8.439 0 0 0-6.169 2.766l-.016.018 3.665 3.084z"/></svg></a>
         </div>
       </div>
     </div>
-  </section>
-
-  <section class="px-4 py-10">
-    <div class="mx-auto grid max-w-[1140px] gap-5 sm:grid-cols-2 lg:grid-cols-4">
-      {["מעבדת מחשבים", "תקשורת ורשתות", "חשמל", "מצלמות אבטחה"].map((s) => (
-        <div class="glass-sm is-clickable reveal border border-white/60 p-7">
-          <h3 class="mb-2 text-[18px]">{s}</h3>
-          <p class="text-[14px] text-[var(--color-ink-dim)]">בדיקת רכיב כרטיס עם אפקט זכוכית ומצב לחיץ.</p>
-        </div>
-      ))}
-    </div>
-  </section>
-
-  <Faq items={demoFaq} />
-
-  <section class="px-4 py-10" id="contact">
-    <div class="mx-auto max-w-[1140px] text-center">
-      <h2 class="mb-3 text-[clamp(22px,3vw,30px)]">יצירת קשר</h2>
-      <p class="text-[var(--color-ink-dim)]">עוגן לבדיקת ניווט - {site.address}</p>
-    </div>
-  </section>
-
-  <div class="h-[60vh]"></div>
+  </div>
+</section>
 </BaseLayout>

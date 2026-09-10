@@ -1,7 +1,8 @@
 ---
 import { site, ctaLabels } from "../data/site";
 const path = Astro.url.pathname;
-const ctaLabel = ctaLabels[path] ?? "חייגו: ";
+const key = path.replace(/\/+$/, "") || "/";
+const ctaLabel = ctaLabels[key] ?? "חייגו: ";
 ---
 
 <!-- כפתורי יצירת קשר צפים -->
