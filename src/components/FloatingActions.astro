@@ -1,0 +1,227 @@
+---
+import { site, ctaLabels } from "../data/site";
+const path = Astro.url.pathname;
+const ctaLabel = ctaLabels[path] ?? "חייגו: ";
+---
+
+<!-- כפתורי יצירת קשר צפים -->
+<div class="sticky-cta" id="stickyCta">
+  <a href={site.phoneHref} class="btn btn-primary">
+    <svg viewBox="0 0 24 24" class="h-[18px] w-[18px]" stroke="#fff" fill="none" stroke-width="1.8">
+      <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z" />
+    </svg>
+    <span class="cta-label">{ctaLabel}</span>{site.phone}
+  </a>
+  <a href={site.whatsapp} target="_blank" rel="noopener" class="btn">
+    <svg viewBox="0 0 24 24" class="h-[18px] w-[18px]" fill="var(--color-wa)">
+      <path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.87 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.7.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.17-1.42-.07-.12-.27-.2-.57-.35M12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88M20.46 3.48A11.82 11.82 0 0 0 12.05 0C5.49 0 .16 5.34.15 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.48-8.4" />
+    </svg>
+    וואטסאפ
+  </a>
+</div>
+
+<!-- כפתור נגישות -->
+<button class="fab-corner fab-a11y" id="a11yFab" aria-label="פתיחת תפריט נגישות" aria-haspopup="dialog">
+  <svg viewBox="0 0 24 24" fill="none" stroke="var(--color-brand-blue)" stroke-width="1.8">
+    <circle cx="12" cy="4.2" r="1.8" /><path d="M4.5 8.2c4.8 1.4 10.2 1.4 15 0M12 8.6v6m0 0-3 6.2m3-6.2 3 6.2" />
+  </svg>
+</button>
+
+<!-- חזרה למעלה -->
+<button class="fab-corner fab-top" id="backToTop" aria-label="חזרה לראש העמוד">
+  <svg viewBox="0 0 24 24" fill="none" stroke="var(--color-brand-blue)" stroke-width="2">
+    <path d="M12 19V5M5 12l7-7 7 7" />
+  </svg>
+</button>
+
+<!-- תפריט נגישות -->
+<dialog id="a11yDlg" aria-labelledby="a11yTitle">
+  <h2 id="a11yTitle" class="mb-4 text-lg">נגישות</h2>
+  <div class="a11y-opts">
+    <button type="button" id="optBig" aria-pressed="false">הגדלת גודל הטקסט</button>
+    <button type="button" id="optHc" aria-pressed="false">ניגודיות גבוהה</button>
+    <button type="button" id="optReset">איפוס הגדרות</button>
+  </div>
+  <p class="mt-4 text-[13px] leading-relaxed text-[var(--color-ink-dim)]">
+    אתר זה נבנה בהתאם לתקנות שוויון זכויות לאנשים עם מוגבלות (התאמות נגישות לשירות), התשע"ג-2013 ולתקן הישראלי 5568.
+  </p>
+  <button class="mt-4 btn" id="a11yClose" type="button">סגירה</button>
+</dialog>
+
+<!-- באנר עוגיות -->
+<div class="cookie-banner" id="cookieBanner">
+  <p>האתר משתמש בעוגיות אנליטיות (Google Analytics) כדי להבין איך משפרים את השירות. פרטים ב<a href="/mediniyut-privatiyut">מדיניות הפרטיות</a>.</p>
+  <div class="flex gap-2">
+    <button class="cookie-decline" id="cookieDecline">לא תודה</button>
+    <button class="cookie-accept" id="cookieAccept">מאשר/ת</button>
+  </div>
+</div>
+
+<style>
+  .sticky-cta {
+    position: fixed;
+    bottom: 20px;
+    inset-inline-start: 50%;
+    transform: translateX(50%) translateY(160px);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 315;
+    display: flex;
+    gap: 12px;
+    transition: transform 0.35s ease, opacity 0.3s ease, bottom 0.3s ease;
+  }
+  .sticky-cta.show { transform: translateX(50%) translateY(0); opacity: 1; pointer-events: auto; }
+  .sticky-cta.lifted { bottom: 78px; }
+  .sticky-cta .btn { box-shadow: 0 12px 26px -12px rgba(30, 46, 64, 0.4); white-space: nowrap; }
+
+  .fab-corner {
+    position: fixed;
+    bottom: 20px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--glass-strong);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: var(--shadow-card);
+    cursor: pointer;
+    z-index: 310;
+    transition: bottom 0.3s ease, opacity 0.3s ease, transform 0.25s ease;
+  }
+  .fab-corner svg { width: 20px; height: 20px; }
+  .fab-corner:hover { transform: translateY(-3px); }
+  .fab-corner.lifted { bottom: 78px; }
+  .fab-a11y { inset-inline-start: 20px; }
+  .fab-top { inset-inline-end: 20px; opacity: 0; pointer-events: none; }
+  .fab-top.show { opacity: 1; pointer-events: auto; }
+
+  /* הסתרת הכפתורים כשתפריט פתוח */
+  :global(body.menu-open) .sticky-cta,
+  :global(body.menu-open) .fab-corner,
+  :global(body.menu-open) .cookie-banner {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
+  }
+
+  dialog {
+    border: none;
+    border-radius: var(--radius-card);
+    padding: 28px;
+    max-width: 420px;
+    background: #fff;
+    box-shadow: var(--shadow-card);
+  }
+  dialog::backdrop { background: rgba(20, 30, 45, 0.4); }
+  .a11y-opts { display: flex; flex-direction: column; gap: 8px; }
+  .a11y-opts button {
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: 1px solid var(--hair);
+    background: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14.5px;
+    text-align: start;
+  }
+  .a11y-opts button[aria-pressed="true"] {
+    background: rgba(47, 128, 245, 0.1);
+    border-color: var(--color-brand-blue);
+    color: var(--color-brand-blue);
+  }
+
+  .cookie-banner {
+    position: fixed;
+    inset-inline: 0;
+    bottom: 0;
+    z-index: 320;
+    background: var(--color-navy-deep);
+    color: #fff;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    transform: translateY(110%);
+    transition: transform 0.4s ease;
+  }
+  .cookie-banner.show { transform: translateY(0); }
+  .cookie-banner p { font-size: 13.5px; margin: 0; }
+  .cookie-banner a { color: var(--color-brand-sky); text-decoration: underline; }
+  .cookie-accept, .cookie-decline {
+    padding: 9px 18px;
+    border-radius: 10px;
+    font-size: 13.5px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    white-space: nowrap;
+  }
+  .cookie-accept { background: var(--color-brand-blue); color: #fff; border: none; }
+  .cookie-decline { background: none; color: #fff; border: 1px solid rgba(255, 255, 255, 0.4); }
+
+  @media (max-width: 640px) {
+    .sticky-cta { gap: 8px; max-width: calc(100vw - 24px); }
+    .sticky-cta .btn { min-height: 42px; padding: 0 14px; font-size: 13px; gap: 6px; border-radius: 12px; }
+    /* בדסקטופ בלבד - במובייל רק המספר */
+    .sticky-cta .cta-label { display: none; }
+  }
+</style>
+
+<script>
+  const stickyCta = document.getElementById("stickyCta");
+  const backToTop = document.getElementById("backToTop");
+  const fabs = document.querySelectorAll<HTMLElement>(".fab-corner");
+  const TRIGGER = 300;
+
+  function onScroll() {
+    const show = window.scrollY >= TRIGGER;
+    stickyCta?.classList.toggle("show", show);
+    backToTop?.classList.toggle("show", show);
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  backToTop?.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+  // תפריט נגישות
+  const dlg = document.getElementById("a11yDlg") as HTMLDialogElement | null;
+  document.getElementById("a11yFab")?.addEventListener("click", () => dlg?.showModal());
+  document.getElementById("a11yClose")?.addEventListener("click", () => dlg?.close());
+
+  const toggle = (id: string, fn: (on: boolean) => void) => {
+    const b = document.getElementById(id);
+    b?.addEventListener("click", () => {
+      const on = b.getAttribute("aria-pressed") === "true";
+      b.setAttribute("aria-pressed", String(!on));
+      fn(!on);
+    });
+  };
+  toggle("optBig", (on) => document.documentElement.style.setProperty("--fs", on ? "1.15" : "1"));
+  toggle("optHc", (on) => document.documentElement.classList.toggle("hc", on));
+  document.getElementById("optReset")?.addEventListener("click", () => {
+    document.documentElement.style.setProperty("--fs", "1");
+    document.documentElement.classList.remove("hc");
+    ["optBig", "optHc"].forEach((id) => document.getElementById(id)?.setAttribute("aria-pressed", "false"));
+  });
+
+  // באנר עוגיות
+  const cb = document.getElementById("cookieBanner");
+  const lift = (on: boolean) => {
+    fabs.forEach((f) => f.classList.toggle("lifted", on));
+    stickyCta?.classList.toggle("lifted", on);
+  };
+  if (!localStorage.getItem("zt-cookie")) {
+    setTimeout(() => { cb?.classList.add("show"); lift(true); }, 1200);
+  }
+  const dismiss = (val: string) => {
+    localStorage.setItem("zt-cookie", val);
+    cb?.classList.remove("show");
+    lift(false);
+  };
+  document.getElementById("cookieAccept")?.addEventListener("click", () => dismiss("yes"));
+  document.getElementById("cookieDecline")?.addEventListener("click", () => dismiss("no"));
+</script>

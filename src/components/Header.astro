@@ -1,0 +1,269 @@
+---
+import { site, nav } from "../data/site";
+const path = Astro.url.pathname;
+const isActive = (href: string) => path === href;
+---
+
+<header class="fixed top-0 inset-x-0 z-[300] px-4 pt-4">
+  <div class="glass mx-auto flex max-w-[1140px] items-center justify-between gap-4 px-5 py-3">
+    <a href="/" aria-label="Zulatech - לעמוד הבית">
+      <img src="/logo.svg" alt="Zulatech" class="h-6 w-auto" />
+    </a>
+
+    <!-- ניווט דסקטופ -->
+    <nav class="mainnav hidden items-center gap-1 lg:flex" aria-label="ניווט ראשי">
+      <a href="/" class:list={["nav-link", isActive("/") && "is-current"]}>בית</a>
+
+      <div class="nav-item">
+        <button type="button" class="nav-link" aria-haspopup="true" aria-expanded="false">
+          אני צריך פתרון
+          <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9" /></svg>
+        </button>
+        <div class="dropdown">
+          {nav.audiences.map((l) => <a href={l.href}>{l.label}</a>)}
+        </div>
+      </div>
+
+      <div class="nav-item">
+        <button type="button" class="nav-link" aria-haspopup="true" aria-expanded="false">
+          שירותים
+          <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9" /></svg>
+        </button>
+        <div class="dropdown">
+          {nav.services.map((l) => <a href={l.href}>{l.label}</a>)}
+        </div>
+      </div>
+
+      <a href="/ezorei-sherut" class:list={["nav-link", isActive("/ezorei-sherut") && "is-current"]}>אזורי שירות</a>
+      {nav.main.map((l) => <a href={l.href} class:list={["nav-link", isActive(l.href) && "is-current"]}>{l.label}</a>)}
+      <a href="#contact" class="nav-link">צור קשר</a>
+    </nav>
+
+    <!-- כפתור תפריט מובייל -->
+    <button type="button" id="mobileMenuBtn" class="lg:hidden" aria-label="פתיחת תפריט" aria-expanded="false" aria-controls="mobileDrawer">
+      <svg width="24" height="24" viewBox="0 0 24 24" stroke="#1E2E40" fill="none" stroke-width="2">
+        <line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="18" x2="21" y2="18" />
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- רקע כהה מאחורי התפריט -->
+<div class="mobile-scrim" id="mobileScrim" hidden></div>
+
+<!-- תפריט מובייל נגלל -->
+<aside class="mobile-drawer" id="mobileDrawer" aria-label="תפריט ניווט" hidden>
+  <div class="flex justify-end pb-4">
+    <button type="button" id="mobileDrawerClose" aria-label="סגירת תפריט" class="p-1.5">
+      <svg width="22" height="22" viewBox="0 0 24 24" stroke="#1E2E40" fill="none" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+      </svg>
+    </button>
+  </div>
+
+  <div class="md-group"><a href="/">בית</a></div>
+
+  <div class="md-group md-acc">
+    <button type="button" class="md-acc-btn" aria-expanded="false">
+      <span>אני צריך פתרון</span>
+      <svg class="md-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9" /></svg>
+    </button>
+    <div class="md-acc-panel">{nav.audiences.map((l) => <a href={l.href}>{l.label}</a>)}</div>
+  </div>
+
+  <div class="md-group md-acc">
+    <button type="button" class="md-acc-btn" aria-expanded="false">
+      <span>שירותים</span>
+      <svg class="md-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9" /></svg>
+    </button>
+    <div class="md-acc-panel">{nav.services.map((l) => <a href={l.href}>{l.label}</a>)}</div>
+  </div>
+
+  <div class="md-group md-acc">
+    <button type="button" class="md-acc-btn" aria-expanded="false">
+      <span>אזורי שירות</span>
+      <svg class="md-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9" /></svg>
+    </button>
+    <div class="md-acc-panel">{nav.areas.map((l) => <a href={l.href}>{l.label}</a>)}</div>
+  </div>
+
+  <div class="md-group">
+    {nav.main.map((l) => <a href={l.href}>{l.label}</a>)}
+    <a href="#contact">צור קשר</a>
+  </div>
+</aside>
+
+<style>
+  .nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 13px;
+    border-radius: 11px;
+    font-size: 14.5px;
+    font-weight: 500;
+    color: var(--color-navy);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .nav-link:hover { background: rgba(47, 128, 245, 0.08); color: var(--color-brand-blue); }
+  .nav-link.is-current { color: var(--color-brand-blue); }
+
+  .nav-item { position: relative; }
+
+  .dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    inset-inline-end: 0;
+    min-width: 230px;
+    z-index: 150;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    box-shadow: var(--shadow-card);
+    padding: 8px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(6px);
+    transition: 0.2s ease;
+  }
+  .nav-item:hover .dropdown,
+  .nav-item:focus-within .dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .dropdown a {
+    display: block;
+    padding: 11px 14px;
+    border-radius: 10px;
+    font-size: 14.5px;
+    color: var(--color-ink);
+    white-space: nowrap;
+  }
+  .dropdown a:hover { background: rgba(47, 128, 245, 0.08); color: var(--color-brand-blue); }
+
+  /* --- תפריט מובייל --- */
+  .mobile-scrim {
+    position: fixed;
+    inset: 0;
+    background: rgba(20, 30, 45, 0.35);
+    z-index: 190;
+  }
+  .mobile-drawer {
+    position: fixed;
+    top: 0;
+    inset-inline-end: 0;
+    bottom: 0;
+    width: min(320px, 86vw);
+    background: #fff;
+    z-index: 200;
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.18);
+    padding: 24px 22px;
+    overflow-y: auto;
+    transform: translateX(105%);
+    transition: transform 0.3s ease;
+  }
+  [dir="rtl"] .mobile-drawer { transform: translateX(-105%); }
+  .mobile-drawer.open,
+  [dir="rtl"] .mobile-drawer.open { transform: translateX(0); }
+
+  .md-group { margin-bottom: 22px; }
+  .md-group a {
+    display: block;
+    padding: 10px 4px;
+    font-size: 15px;
+    color: var(--color-ink);
+    border-bottom: 1px solid var(--hair);
+  }
+  .md-acc-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 12px 4px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--color-navy-deep);
+    border-bottom: 1px solid var(--hair);
+  }
+  .md-chev { width: 18px; height: 18px; flex-shrink: 0; transition: transform 0.25s ease; }
+  .md-acc-btn[aria-expanded="true"] { color: var(--color-brand-blue); }
+  .md-acc-btn[aria-expanded="true"] .md-chev { transform: rotate(180deg); }
+  .md-acc-panel { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+  .md-acc-panel a { padding-inline-start: 16px; font-size: 14.5px; }
+
+  @media (min-width: 1024px) {
+    .mobile-drawer, .mobile-scrim { display: none !important; }
+  }
+</style>
+
+<script>
+  const btn = document.getElementById("mobileMenuBtn");
+  const drawer = document.getElementById("mobileDrawer");
+  const scrim = document.getElementById("mobileScrim");
+  const closeBtn = document.getElementById("mobileDrawerClose");
+
+  function openDrawer() {
+    drawer?.removeAttribute("hidden");
+    scrim?.removeAttribute("hidden");
+    // מאפשר לדפדפן לצייר לפני האנימציה
+    requestAnimationFrame(() => {
+      drawer?.classList.add("open");
+      document.body.classList.add("menu-open");
+      btn?.setAttribute("aria-expanded", "true");
+    });
+  }
+
+  function closeDrawer() {
+    drawer?.classList.remove("open");
+    document.body.classList.remove("menu-open");
+    btn?.setAttribute("aria-expanded", "false");
+    setTimeout(() => {
+      drawer?.setAttribute("hidden", "");
+      scrim?.setAttribute("hidden", "");
+    }, 300);
+  }
+
+  btn?.addEventListener("click", openDrawer);
+  closeBtn?.addEventListener("click", closeDrawer);
+  scrim?.addEventListener("click", closeDrawer);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && drawer?.classList.contains("open")) closeDrawer();
+  });
+
+  // אקורדיון - פתיחה אחת בכל פעם
+  document.querySelectorAll<HTMLButtonElement>(".md-acc-btn").forEach((accBtn) => {
+    accBtn.addEventListener("click", () => {
+      const panel = accBtn.nextElementSibling as HTMLElement | null;
+      const isOpen = accBtn.getAttribute("aria-expanded") === "true";
+
+      document.querySelectorAll<HTMLButtonElement>(".md-acc-btn").forEach((other) => {
+        if (other !== accBtn) {
+          other.setAttribute("aria-expanded", "false");
+          const p = other.nextElementSibling as HTMLElement | null;
+          if (p) p.style.maxHeight = "";
+        }
+      });
+
+      if (isOpen) {
+        accBtn.setAttribute("aria-expanded", "false");
+        if (panel) panel.style.maxHeight = "";
+      } else {
+        accBtn.setAttribute("aria-expanded", "true");
+        if (panel) panel.style.maxHeight = panel.scrollHeight + "px";
+      }
+    });
+  });
+
+  // סגירת התפריט בניווט
+  drawer?.querySelectorAll("a").forEach((a) => a.addEventListener("click", closeDrawer));
+</script>

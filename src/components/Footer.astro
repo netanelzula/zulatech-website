@@ -1,0 +1,64 @@
+---
+import { site, nav } from "../data/site";
+const year = new Date().getFullYear();
+---
+
+<footer class="mt-24 border-t border-[var(--hair)] px-4 pb-8 pt-14">
+  <div class="mx-auto max-w-[1140px]">
+    <div class="footer-grid">
+      <div>
+        <img src="/logo.svg" alt="Zulatech" class="mb-3 h-6 w-auto" />
+        <p class="mb-3 font-semibold text-[var(--color-navy)]">{site.slogan}</p>
+        <p class="text-[12.8px] leading-[1.7] text-[var(--color-ink-dim)]">
+          מחשבים · תקשורת · חשמל · מצלמות אבטחה<br />חדרה והשרון
+        </p>
+      </div>
+
+      <div>
+        <h4>אני צריך פתרון</h4>
+        {nav.audiences.map((l) => <a href={l.href}>{l.label}</a>)}
+      </div>
+
+      <div>
+        <h4>שירותים</h4>
+        {nav.services.map((l) => <a href={l.href}>{l.label}</a>)}
+      </div>
+
+      <div>
+        <h4>מידע</h4>
+        <a href={site.phoneHref}>{site.phone}</a>
+        <a href="/ezorei-sherut">אזורי שירות</a>
+        {nav.legal.map((l) => <a href={l.href}>{l.label}</a>)}
+      </div>
+    </div>
+
+    <div class="mt-8 border-t border-[var(--hair)] pt-6 text-center text-[13px] text-[var(--color-ink-dim)]">
+      <span>© {site.name} {year} - כל הזכויות שמורות</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr 1fr;
+    gap: 36px;
+  }
+  @media (max-width: 760px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+  }
+  .footer-grid h4 {
+    color: var(--color-navy-deep);
+    font-size: 13.5px;
+    margin-bottom: 14px;
+    font-weight: 700;
+  }
+  .footer-grid a {
+    display: block;
+    margin-bottom: 9px;
+    font-size: 14px;
+    color: var(--color-ink-dim);
+    transition: color 0.2s ease;
+  }
+  .footer-grid a:hover { color: var(--color-brand-blue); }
+</style>
